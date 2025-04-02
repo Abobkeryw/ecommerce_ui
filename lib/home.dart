@@ -1,3 +1,4 @@
+import 'package:ecommerce_ui/details.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -28,6 +29,30 @@ class _HomePageState extends State<HomePage> {
       "subtitle": "lampo Gen 5",
       "price": "4360\$",
     },
+    {
+      "image": "images/OIPtwo.jpeg",
+      "title": "Car",
+      "subtitle": "lampo Gen 3",
+      "price": "34360\$",
+    },
+    {
+      "image": "images/OIP.jpeg",
+      "title": "Car",
+      "subtitle": "lampo Gen 5",
+      "price": "4360\$",
+    },
+    {
+      "image": "images/OIPtwo.jpeg",
+      "title": "Car",
+      "subtitle": "lampo Gen 3",
+      "price": "34360\$",
+    },
+    {
+      "image": "images/OIP.jpeg",
+      "title": "Car",
+      "subtitle": "lampo Gen 5",
+      "price": "4360\$",
+    },
   ];
   @override
   Widget build(BuildContext context) {
@@ -36,10 +61,20 @@ class _HomePageState extends State<HomePage> {
         iconSize: 40,
         selectedItemColor: Colors.orange,
         items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.shopping_bag_outlined), label: 'Shop'),
-        BottomNavigationBarItem(icon: Icon(Icons.person_2_outlined), label: 'person'),  
-      ]),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag_outlined),
+            label: 'Shop',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_2_outlined),
+            label: 'person',
+          ),
+        ],
+      ),
       body: Container(
         padding: EdgeInsets.all(20),
         child: ListView(
@@ -111,40 +146,50 @@ class _HomePageState extends State<HomePage> {
               physics: NeverScrollableScrollPhysics(),
               itemCount: items.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, mainAxisExtent: 230
+                crossAxisCount: 2,
+                mainAxisExtent: 230,
               ),
               itemBuilder: (BuildContext context, int index) {
-                return Card(
-                  child: Column(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(20),
-                        width: 300,
-                        color: Colors.grey[200],
-                        child: Image.asset(
-                          items[index]["image"],
-                          height: 100,
-                          fit: BoxFit.fill,
+                return InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => ItemDetails(data: items[index]),
+                      ),
+                    );
+                  },
+                  child: Card(
+                    child: Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(20),
+                          width: 300,
+                          color: Colors.grey[200],
+                          child: Image.asset(
+                            items[index]["image"],
+                            height: 100,
+                            fit: BoxFit.fill,
+                          ),
                         ),
-                      ),
-                      Text(
-                        items[index]["title"],
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
+                        Text(
+                          items[index]["title"],
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      Container(height: 2),
-                      Text(
-                        items[index]["subtitle"],
-                        style: TextStyle(fontSize: 14, color: Colors.grey),
-                      ),
-                      Container(height: 5),
-                      Text(
-                        items[index]["price"],
-                        style: TextStyle(fontSize: 14, color: Colors.orange),
-                      ),
-                    ],
+                        Container(height: 2),
+                        Text(
+                          items[index]["subtitle"],
+                          style: TextStyle(fontSize: 14, color: Colors.grey),
+                        ),
+                        Container(height: 5),
+                        Text(
+                          items[index]["price"],
+                          style: TextStyle(fontSize: 14, color: Colors.orange),
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },

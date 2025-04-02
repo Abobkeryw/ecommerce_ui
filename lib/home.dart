@@ -32,6 +32,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        iconSize: 40,
+        selectedItemColor: Colors.orange,
+        items: [
+        BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: 'Home'),
+        BottomNavigationBarItem(icon: Icon(Icons.shopping_bag_outlined), label: 'Shop'),
+        BottomNavigationBarItem(icon: Icon(Icons.person_2_outlined), label: 'person'),  
+      ]),
       body: Container(
         padding: EdgeInsets.all(20),
         child: ListView(
@@ -94,7 +102,7 @@ class _HomePageState extends State<HomePage> {
             Container(
               margin: EdgeInsets.symmetric(vertical: 10),
               child: Text(
-                "Categories",
+                "Best SellIng ",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
             ),
